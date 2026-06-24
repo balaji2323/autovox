@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: autovox-config
+  namespace: autovox
+data:
+  DJANGO_DEBUG: "False"
+  DJANGO_ALLOWED_HOSTS: "your-load-balancer-dns,autovoxai.com,www.autovoxai.com"
+  DJANGO_CSRF_TRUSTED_ORIGINS: "https://autovoxai.com,https://www.autovoxai.com"
+  DJANGO_SESSION_COOKIE_SECURE: "True"
+  DJANGO_CSRF_COOKIE_SECURE: "True"
+  EMAIL_HOST: "smtp.gmail.com"
+  EMAIL_PORT: "587"
+  EMAIL_USE_TLS: "True"
+  DEFAULT_FROM_EMAIL: "k.balaji2312@gmail.com"
+  AUTOVOX_ENQUIRY_EMAIL: "k.balaji2312@gmail.com"

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autovox-web
+  namespace: autovox
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: autovox-web
+  template:
+    metadata:
+      labels:
+        app: autovox-web
+    spec:
+      containers:
+        - name: web
+          image: REPLACE_WITH_ECR_IMAGE_URI
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: autovox-config
+            - secretRef:
+                name: autovox-secret
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 20

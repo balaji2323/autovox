@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 250">
+  <defs>
+    <linearGradient id="markBlue" x1="70" y1="35" x2="390" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0d8dff"/>
+      <stop offset="0.45" stop-color="#2369f3"/>
+      <stop offset="1" stop-color="#0f58df"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-15%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#1977f3" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1180" height="250" fill="none"/>
+
+  <g filter="url(#softShadow)">
+    <g fill="none" stroke="url(#markBlue)" stroke-linecap="round">
+      <path d="M34 125v14" stroke-width="13"/>
+      <path d="M58 111v42" stroke-width="13"/>
+      <path d="M84 94v76" stroke-width="13"/>
+      <path d="M312 94v76" stroke-width="13"/>
+      <path d="M338 111v42" stroke-width="13"/>
+      <path d="M362 125v14" stroke-width="13"/>
+    </g>
+
+    <path d="M112 184 163 54c6-16 29-16 36 0l55 143c4 10 18 9 21-1l24-78"
+          fill="none"
+          stroke="url(#markBlue)"
+          stroke-width="36"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <path d="M144 126h78"
+          fill="none"
+          stroke="url(#markBlue)"
+          stroke-width="27"
+          stroke-linecap="round"/>
+  </g>
+
+  <g font-family="Inter, Poppins, Arial, sans-serif" font-weight="800">
+    <text x="430" y="159" font-size="101" letter-spacing="-3" fill="#071b3d">AutoVox</text>
+    <text x="875" y="159" font-size="101" letter-spacing="-3" fill="#1977f3">AI</text>
+  </g>
+</svg>
