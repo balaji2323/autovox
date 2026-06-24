@@ -6,9 +6,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-only-autovox-ai-secret-key")
 DEBUG = os.environ.get("DJANGO_DEBUG", "True").lower() == "true"
+DEFAULT_ALLOWED_HOSTS = "localhost,127.0.0.1,.vercel.app"
 ALLOWED_HOSTS = [
     host.strip()
-    for host in os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+    for host in os.environ.get("DJANGO_ALLOWED_HOSTS", DEFAULT_ALLOWED_HOSTS).split(",")
     if host.strip()
 ]
 
@@ -76,9 +77,12 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+DEFAULT_CSRF_TRUSTED_ORIGINS = "https://*.vercel.app"
 CSRF_TRUSTED_ORIGINS = [
     origin.strip()
-    for origin in os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",")
+    for origin in os.environ.get(
+        "DJANGO_CSRF_TRUSTED_ORIGINS", DEFAULT_CSRF_TRUSTED_ORIGINS
+    ).split(",")
     if origin.strip()
 ]
 
