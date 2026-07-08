@@ -1,0 +1,25 @@
+# PDF Processing
+pdfplumber
+
+# LangChain & AI Models
+langchain
+langchain-community
+langchain-huggingface
+langchain-google-genai
+openai
+sentence-transformers
+
+# Databases (Vector & Relational)
+chromadb
+langchain-chroma
+mysql-connector-python
+
+# Web Server & Telephony (NEW)
+flask
+twilio
+fpdf
+matplotlib
+seaborn
+
+# Utilities
+python-dotenv

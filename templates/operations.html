@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruitment Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+  <div class="app-shell inner-shell">
+    <main class="workspace single-workspace">
+      <header class="topbar panel">
+        <div class="brand-row">
+          <div class="brand-mark">AI Recruiter</div>
+        </div>
+        <nav class="top-actions">
+          <div class="profile-chip">
+            <div class="avatar-badge">B</div>
+            <div class="profile-copy">
+              <strong id="profileName">Balaji</strong>
+            </div>
+          </div>
+          <button class="logout-chip" id="logoutButton">Logout</button>
+        </nav>
+      </header>
+
+      <section class="panel page-hero">
+        <h1>Recruitment Operations</h1>
+        <p id="userBadge">Upload resumes, create job analysis, and monitor analysis activity from one page.</p>
+      </section>
+
+      <section class="operations-section panel" id="operationsSection">
+        <div class="panel-head section-head">
+          <div>
+            <h3>Operations Workspace</h3>
+            <p>Upload resume files, create job analysis, monitor logs, and review analysis results here.</p>
+          </div>
+        </div>
+
+        <section class="workspace-columns">
+          <section class="panel form-panel" id="uploadSection">
+            <div class="panel-head">
+              <div>
+                <h3>Upload Resumes</h3>
+                <p>Select one or more PDF resumes to embed and store.</p>
+              </div>
+            </div>
+            <form id="uploadForm" class="stack">
+              <label class="upload-box">
+                <input id="resumeFiles" type="file" name="resumes" accept=".pdf" multiple>
+                <span>Choose PDF resumes</span>
+                <small id="selectedFilesLabel">No files selected</small>
+              </label>
+              <button type="submit" class="primary-button">Upload to Vector DB</button>
+            </form>
+            <div id="uploadStatus" class="status-box"></div>
+          </section>
+
+          <section class="panel form-panel" id="analysisSection">
+            <div class="panel-head">
+              <div>
+                <h3>Create Job Analysis</h3>
+                <p>Paste the role details to evaluate candidate fit.</p>
+              </div>
+            </div>
+            <form id="analysisForm" class="stack">
+              <textarea id="jobDescription" rows="14" placeholder="Paste the full job description here..."></textarea>
+              <button type="submit" class="success-button">Analyze and Contact Top Match</button>
+            </form>
+          </section>
+        </section>
+
+        <section class="lower-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h3>System Log</h3>
+                <p>Run history and automated actions appear here.</p>
+              </div>
+            </div>
+            <pre id="systemLog" class="log-box">System ready.</pre>
+          </section>
+
+          <section class="panel" id="analysisResultsSection">
+            <div class="panel-head">
+              <div>
+                <h3>Analysis Results</h3>
+                <p>ATS screening and interview qualification status from the current run.</p>
+              </div>
+            </div>
+            <div id="analysisResults" class="results-list">
+              <p class="empty-state">No analysis has been run yet.</p>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/operations.js') }}"></script>
+</body>
+</html>

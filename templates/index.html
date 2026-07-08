@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecruitAI Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <section class="login-screen" id="loginScreen">
+      <div class="hero-panel panel">
+        <div class="eyebrow">AI recruiter workspace</div>
+        <h1>Manage AI recruitment from a polished hiring portal.</h1>
+        <p class="hero-copy">
+          Screen resumes, evaluate ATS fit, review candidate analytics, and trigger outreach through one clean dashboard designed for recruiter workflows.
+        </p>
+        <div class="hero-metrics">
+          <article class="metric-card">
+            <strong>Unified workspace</strong>
+            <span>Everything lives inside one AI recruiter portal.</span>
+          </article>
+          <article class="metric-card">
+            <strong>Seaborn insights</strong>
+            <span>Visualize ATS score trends with backend-generated charts.</span>
+          </article>
+          <article class="metric-card">
+            <strong>Smart actions</strong>
+            <span>Trigger email and phone outreach for strong candidates.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="login-panel panel">
+        <div class="panel-header">
+          <span class="eyebrow">Welcome back</span>
+          <h2>Sign in</h2>
+          <p>Access your AI recruiter dashboard with your personal login.</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+          <label class="field">
+            <span>Username</span>
+            <input id="usernameInput" name="username" type="text" placeholder="Enter username">
+          </label>
+
+          <label class="field">
+            <span>Password</span>
+            <input id="passwordInput" name="password" type="password" placeholder="Enter password">
+          </label>
+
+          <p id="loginError" class="error-text"></p>
+
+          <button type="submit" class="primary-button">Open workspace</button>
+          <a id="showForgotPasswordButton" class="text-button" href="/forgot-password">Forgot Password?</a>
+        </form>
+      </div>
+    </section>
+
+    <section class="dashboard hidden" id="dashboard">
+      <main class="workspace single-workspace">
+        <header class="topbar panel">
+          <div class="brand-row">
+            <div class="brand-mark">AI Recruiter</div>
+          </div>
+          <nav class="top-actions">
+            <div class="search-shell">
+              <input id="topSearch" class="search-input" type="text" placeholder="Search candidates, jobs...">
+            </div>
+            <button class="icon-chip" type="button" aria-label="Notifications">◌</button>
+            <div class="profile-chip">
+              <div class="avatar-badge">B</div>
+              <div class="profile-copy">
+                <strong id="profileName">Balaji</strong>
+              </div>
+            </div>
+            <button class="nav-chip" data-scroll-target="overviewSection">Dashboard</button>
+            <button class="logout-chip" id="logoutButton">Logout</button>
+          </nav>
+        </header>
+
+        <div class="portal-shell">
+          <aside class="portal-sidebar panel">
+            <div class="sidebar-logo">AI Recruiter</div>
+            <nav class="portal-nav">
+              <button class="portal-nav-item active" data-scroll-target="overviewSection"><span class="nav-icon">⌂</span><span>Dashboard</span></button>
+              <a class="portal-nav-item" href="/recruitment-operations"><span class="nav-icon">≣</span><span>Operations</span></a>
+              <a class="portal-nav-item" href="/resumes"><span class="nav-icon">▣</span><span>Resumes</span></a>
+              <a class="portal-nav-item" href="/resumes"><span class="nav-icon">◍</span><span>Candidates</span></a>
+              <a class="portal-nav-item" href="/interviews"><span class="nav-icon">◷</span><span>Interviews</span></a>
+              <a class="portal-nav-item" href="/shortlisted"><span class="nav-icon">★</span><span>Shortlisted</span></a>
+              <a class="portal-nav-item" href="/rejected-candidates"><span class="nav-icon">✕</span><span>Rejected</span></a>
+              <button class="portal-nav-item" data-scroll-target="analyticsSection"><span class="nav-icon">◫</span><span>Analytics</span></button>
+              <a class="portal-nav-item" href="/settings"><span class="nav-icon">⚙</span><span>Settings</span></a>
+            </nav>
+            <div class="sidebar-promo">
+              <strong>Streamline hiring with AI</strong>
+              <p>Upload resumes, analyze with ATS, and act on the best talent.</p>
+            </div>
+          </aside>
+
+          <section class="portal-main">
+            <section class="welcome-card panel" id="overviewSection">
+              <h2>Welcome back, HR Manager!</h2>
+              <p id="userBadge">Find, evaluate, and hire the best talent with your AI-powered recruitment workspace.</p>
+              <div class="welcome-actions">
+                <a class="primary-button inline-action button-link" href="/resumes">Open Resume Page</a>
+                <a class="success-button inline-action button-link" href="/recruitment-operations">Open Recruitment Operations</a>
+              </div>
+            </section>
+
+            <section class="summary-grid">
+              <article class="summary-card panel">
+                <div class="summary-icon lavender">✦</div>
+                <span>Jobs Posted</span>
+                <strong id="jobsPosted">0</strong>
+                <small>Active job openings</small>
+              </article>
+              <article class="summary-card panel">
+                <div class="summary-icon mint">▣</div>
+                <span>Resumes Uploaded</span>
+                <strong id="resumesUploaded">0</strong>
+                <small>This month</small>
+              </article>
+              <article class="summary-card panel">
+                <div class="summary-icon sky">◍</div>
+                <span>Interviews Completed</span>
+                <strong id="interviewsCompleted">0</strong>
+                <small>This month</small>
+              </article>
+              <article class="summary-card panel">
+                <div class="summary-icon lime">✓</div>
+                <span>Hires Made</span>
+                <strong id="hiresMade">0</strong>
+                <small>This month</small>
+              </article>
+            </section>
+
+            <section class="analytics-layout" id="analyticsSection">
+              <div class="analytics-main panel">
+                <div class="panel-head">
+                  <h3>Resume Analytics Overview</h3>
+                </div>
+                <div class="analytics-charts">
+                  <article class="chart-card">
+                    <img id="overviewChart" alt="Resume analytics overview chart">
+                  </article>
+                  <article class="chart-card">
+                    <img id="distributionChart" alt="Score distribution chart">
+                  </article>
+                </div>
+              </div>
+
+              <aside class="activity-card panel">
+                <div class="panel-head">
+                  <h3>Recent Activity</h3>
+                </div>
+                <div id="recentActivity" class="activity-list"></div>
+              </aside>
+            </section>
+
+            <section class="panel launcher-panel">
+              <div class="panel-head">
+                <div>
+                  <h3>Workspace Pages</h3>
+                  <p>The dashboard now keeps only navigation buttons. Open the page you want to work in.</p>
+                </div>
+              </div>
+              <div class="launcher-grid">
+                <a class="launcher-card" href="/recruitment-operations">
+                  <strong>Recruitment Operations</strong>
+                  <p>Upload resumes, create job analysis, review logs, and see analysis results.</p>
+                </a>
+                <a class="launcher-card" href="/resumes">
+                  <strong>Resume Section</strong>
+                  <p>Review resumes, ATS decisions, interview results, and open transcripts.</p>
+                </a>
+              </div>
+            </section>
+          </section>
+        </div>
+      </main>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
